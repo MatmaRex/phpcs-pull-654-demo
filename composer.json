@@ -1,0 +1,9 @@
+{
+    "require-dev": {
+        "squizlabs/php_codesniffer": "^3.10"
+    },
+    "scripts": {
+        "phpcs": "phpcs -s --report-width=95 demo.php",
+        "demo": "composer run phpcs | grep -v Time: | diff -u - expected.txt"
+    }
+}
