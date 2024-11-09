@@ -4,21 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "c093e00a886d3000e05a97c85331c8f5",
+    "content-hash": "302bdd3577116571028569ac8a53a3bc",
     "packages": [],
     "packages-dev": [
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.10.3",
+            "version": "dev-wordwrap",
             "source": {
                 "type": "git",
-                "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "62d32998e820bddc40f99f8251958aed187a5c9c"
+                "url": "https://github.com/MatmaRex/PHP_CodeSniffer_.git",
+                "reference": "b44b30fa4aaed95dba2fcf75f0adb80a6f92f65e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/62d32998e820bddc40f99f8251958aed187a5c9c",
-                "reference": "62d32998e820bddc40f99f8251958aed187a5c9c",
+                "url": "https://api.github.com/repos/MatmaRex/PHP_CodeSniffer_/zipball/b44b30fa4aaed95dba2fcf75f0adb80a6f92f65e",
+                "reference": "b44b30fa4aaed95dba2fcf75f0adb80a6f92f65e",
                 "shasum": ""
             },
             "require": {
@@ -40,7 +40,34 @@
                     "dev-master": "3.x-dev"
                 }
             },
-            "notification-url": "https://packagist.org/downloads/",
+            "scripts": {
+                "cs": [
+                    "@php ./bin/phpcs"
+                ],
+                "cbf": [
+                    "@php ./bin/phpcbf"
+                ],
+                "test": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@php ./vendor/phpunit/phpunit/phpunit tests/AllTests.php --no-coverage"
+                ],
+                "coverage": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@php ./vendor/phpunit/phpunit/phpunit tests/AllTests.php -d max_execution_time=0"
+                ],
+                "coverage-local": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@php ./vendor/phpunit/phpunit/phpunit tests/AllTests.php --coverage-html ./build/coverage-html -d max_execution_time=0"
+                ],
+                "build": [
+                    "Composer\\Config::disableProcessTimeout",
+                    "@php -d phar.readonly=0 -f ./scripts/build-phar.php"
+                ],
+                "check-all": [
+                    "@cs",
+                    "@test"
+                ]
+            },
             "license": [
                 "BSD-3-Clause"
             ],
@@ -67,30 +94,18 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPCSStandards/PHP_CodeSniffer/issues",
-                "security": "https://github.com/PHPCSStandards/PHP_CodeSniffer/security/policy",
+                "wiki": "https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki",
                 "source": "https://github.com/PHPCSStandards/PHP_CodeSniffer",
-                "wiki": "https://github.com/PHPCSStandards/PHP_CodeSniffer/wiki"
+                "security": "https://github.com/PHPCSStandards/PHP_CodeSniffer/security/policy"
             },
-            "funding": [
-                {
-                    "url": "https://github.com/PHPCSStandards",
-                    "type": "github"
-                },
-                {
-                    "url": "https://github.com/jrfnl",
-                    "type": "github"
-                },
-                {
-                    "url": "https://opencollective.com/php_codesniffer",
-                    "type": "open_collective"
-                }
-            ],
-            "time": "2024-09-18T10:38:58+00:00"
+            "time": "2024-10-30T16:13:26+00:00"
         }
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "squizlabs/php_codesniffer": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],
